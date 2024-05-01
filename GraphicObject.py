@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class GraphicProcessor:
     # Весь код по предварительной обработке и передаче данных модулям, ответственным за отрисовку графики на экране
     # содержится в одном классе. В случае появляния каких-то новых наследников у GraphicObject достаточно будет добавить
-    # новую функцию. 
+    # новую функцию.
 
     def visit_static_graphic_element(self, element):
         return element.get_sprite()
