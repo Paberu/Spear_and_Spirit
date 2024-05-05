@@ -1,11 +1,12 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 # battle mixins for units
 class LightningBoltMixin:
 
-    def hit_with_lightning_bolt(self):
-        return
+    @staticmethod
+    def hit_with_lightning_bolt(unit):
+        return unit.get_magical_damage(150)
 
 
 # классы юнитов
@@ -37,5 +38,3 @@ class GreenDragon(Unit):
 class ThunderBird(Unit, LightningBoltMixin):
     def __init__(self):
         super().__init__(10, 10, 100, 13)
-        
-
