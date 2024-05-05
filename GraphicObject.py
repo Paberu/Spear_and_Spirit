@@ -39,7 +39,7 @@ class StaticGraphicObject(GraphicObject):
 
 class DynamicGraphicObject(GraphicObject):
 
-    def __init__(self, sprite, size, current_frame):
+    def __init__(self, sprite, size=4, current_frame=0):
         super().__init__(sprite)
         self.__current_frame = current_frame
         self.__size = size
