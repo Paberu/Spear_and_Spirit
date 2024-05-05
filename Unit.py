@@ -1,6 +1,14 @@
 from abc import ABC, abstractmethod
 
 
+# battle mixins for units
+class LightningBoltMixin:
+
+    def hit_with_lightning_bolt(self):
+        return
+
+
+# классы юнитов
 class Unit(ABC):
 
     def __init__(self, attack, defence, health, movement):
@@ -9,7 +17,6 @@ class Unit(ABC):
         self._health = health
         self._movement = movement
 
-    @abstractmethod
     def get_magical_damage(self, magical_damage):
         self._health -= magical_damage
 
@@ -22,14 +29,13 @@ class GreenDragon(Unit):
     def __init__(self):
         super().__init__(20, 20, 300, 10)
 
+    # опасный момент - переопределение родительского метода
     def get_magical_damage(self, magical_damage):
         self._health -= magical_damage / 2
         
 
-class RockBird(Unit):
+class ThunderBird(Unit, LightningBoltMixin):
     def __init__(self):
         super().__init__(10, 10, 100, 13)
         
-    def get_magical_damage(self, magical_damage):
-        super().get_magical_damage(magical_damage)
 
