@@ -18,8 +18,7 @@ class Hero(ABC, DynamicGraphicObject):
         self.__movement = Hero.BASIC_MOVEMENT
 
         self.artifacts = []
-
-        super().__init__(sprite)
+        DynamicGraphicObject.__init__(sprite)
 
     def __check_movement_artifact(self):
         self.__movement = Hero.BASIC_MOVEMENT
