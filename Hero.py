@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from GraphicObject import DynamicGraphicObject
 
 
-class Hero(ABC, DynamicGraphicObject):
+class Hero(DynamicGraphicObject, ABC):
 
     BASIC_MOVEMENT = 1000
 
@@ -18,7 +18,7 @@ class Hero(ABC, DynamicGraphicObject):
         self.__movement = Hero.BASIC_MOVEMENT
 
         self.artifacts = []
-        DynamicGraphicObject.__init__(sprite)
+        DynamicGraphicObject.__init__(self, sprite=sprite)
 
     def __check_movement_artifact(self):
         self.__movement = Hero.BASIC_MOVEMENT
@@ -111,8 +111,8 @@ class Barbarian(Hero):
 
 
 if __name__ == '__main__':
-    christian = Knight(3, 2, 1, 1)
-    krag_hack = Barbarian(4, 0, 1, 1)
+    christian = Knight(3, 2, 1, 1, None)
+    krag_hack = Barbarian(4, 0, 1, 1, None)
     heroes = (christian, krag_hack)
     for hero in heroes:
         print(hero.level_up())
