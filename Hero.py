@@ -42,12 +42,14 @@ class Hero(DynamicGraphicObject, ABC):
 
         return damage
 
+    @staticmethod
     @abstractmethod
-    def _get_parameter_for_level_up(self):
+    def _get_parameter_for_level_up():
         pass
 
+    @staticmethod
     @abstractmethod
-    def _get_skill_for_level_up(self):
+    def _get_skill_for_level_up():
         pass
 
     def get_attack(self):
@@ -84,9 +86,6 @@ class Knight(Hero):
     def _get_skill_for_level_up():
         return choice(['lidership', 'luck', 'attack', 'defense'])
 
-    def check_movement_artifact(self):
-        super().__check_movement_artifact()
-
 
 class Barbarian(Hero):
 
@@ -105,9 +104,6 @@ class Barbarian(Hero):
     @staticmethod
     def _get_skill_for_level_up():
         return choice(['lidership', 'shoot', 'attack', 'defense'])
-
-    def check_movement_artifact(self):
-        super().__check_movement_artifact()
 
 
 if __name__ == '__main__':
