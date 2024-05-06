@@ -18,13 +18,31 @@ class Hero(DynamicGraphicObject, ABC):
         self.__movement = Hero.BASIC_MOVEMENT
 
         self.artifacts = []
+        self.active_artifacts = []
+
         DynamicGraphicObject.__init__(self, sprite=sprite)
 
     def __check_movement_artifact(self):
         self.__movement = Hero.BASIC_MOVEMENT
-        for artifact in self.artifacts:
+        for artifact in self.active_artifacts:
             if artifact.has_movement_modifier():
                 self.__movement += artifact.movement_modifier
+
+    def check_movement(self):
+        self.__check_movement_artifact()
+
+    def get_artifact(self, artifact):
+        self.artifacts.append(artifact)
+
+    def equip_artifact(self, artifact):
+        if artifact in self.artifacts:
+            self.active_artifacts.append(artifact)
+
+    def giveaway_artifact(self, artifact):
+        if artifact in self.artifacts:
+            if artifact in self.active_artifacts:
+                self.active_artifacts.remove(artifact)
+            self.artifacts.remove(artifact)
 
     @staticmethod
     def _damage_creature(my_creature, some_creature):
