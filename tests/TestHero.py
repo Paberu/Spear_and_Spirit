@@ -29,7 +29,8 @@ class TestHero(unittest.TestCase):
     def test_check_movement(self):
         self.barbarian.get_artifact(self.boots)
         self.barbarian.equip_artifact(self.boots)
-        self.assertEqual(self.barbarian.check_movement(), 2000)
+        self.barbarian.check_movement()
+        self.assertEqual(self.barbarian.get_movement(), 2000)
 
 
 
