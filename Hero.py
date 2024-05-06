@@ -26,10 +26,13 @@ class Hero(DynamicGraphicObject, ABC):
         self.__movement = Hero.BASIC_MOVEMENT
         for artifact in self.active_artifacts:
             if artifact.has_movement_modifier():
-                self.__movement += artifact.movement_modifier
+                self.__movement += artifact.get_movement_modifier()
 
     def check_movement(self):
         self.__check_movement_artifact()
+
+    def get_movement(self):
+        return self.__movement
 
     def get_artifact(self, artifact):
         self.artifacts.append(artifact)
