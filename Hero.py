@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from GraphicObject import DynamicGraphicObject
 
 
-class Hero(DynamicGraphicObject, ABC):
+class Hero(ABC):
 
     BASIC_MOVEMENT = 1000
 
@@ -20,7 +20,7 @@ class Hero(DynamicGraphicObject, ABC):
         self.artifacts = []
         self.active_artifacts = []
 
-        DynamicGraphicObject.__init__(self, sprite=sprite)
+        self.graphic_object = DynamicGraphicObject(sprite)
 
     def __check_movement_artifact(self):
         self.__movement = Hero.BASIC_MOVEMENT
